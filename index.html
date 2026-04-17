@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>다빈치리졸브 교육 세미나 만족도 설문</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- survey-config: {"title":"다빈치리졸브 교육 세미나","subtitle":"만족도 설문","description":"모든 문항은 선택형입니다. 솔직한 답변이 큰 도움이 됩니다.","notice":"설문 결과는 익명으로 처리되며, 세미나 운영 개선에만 활용됩니다.","appsScriptUrl":"https://script.google.com/macros/s/AKfycbyRnVNQUZAcRk2fUx7dGcxv8ixvztwkYsxqqKoyz2BypupTZYBdh3WtraKk4vJZij6f/exec","accentColor":"#3b82f6","bgColor":"#0a0f1e","questions":[{"id":4,"section":"강의 내용","type":"single","fieldName":"강의시간","text":"오늘 강의의 진행 속도와 실습 시간 배분은 적절했나요?","options":["너무 빠르고 실습 시간이 부족했다","대체로 적절했다","약간 느리거나 실습 시간이 여유로웠다"]},{"id":5,"section":"","type":"single","fieldName":"강의난이도","text":"강의 난이도는 적절했나요?","options":["너무 어려웠다","적절했다","너무 쉬웠다"]},{"id":6,"section":"전환요소","type":"single","fieldName":"다빈치 전환의향","text":"오늘 교육 후, 실무 영상 작업이나 교육 현장에 DaVinci Resolve를 도입할 의향이 생기셨나요?","options":["네, 적극적으로 도입할 생각입니다","긍정적이지만 좀 더 학습이 필요합니다","당장은 어렵고 병행 정도만 고려 중입니다","현재로선 도입 계획이 없습니다"]},{"id":7,"section":"","type":"single","fieldName":"다빈치 전환의향 불가능 이유","text":"DaVinci Resolve로의 완전한 전환을 망설이게 하는 요인이 있다면 무엇인가요? (복수 선택 가능)","options":["기존 Premiere Pro UI/UX에 익숙해진 작업 환경","Fairlight, Fusion 등 낯선 페이지에 대한 진입 장벽","기존 프리미어 프로젝트 파일 및 플러그인 호환성 문제","팀원이나 협업자가 Premiere Pro를 사용 중"]},{"id":10,"section":"교육자료","type":"multi","fieldName":"교육자료","text":"DaVinci Resolve를 팀 내 도입하거나 타인에게 교육할 때, 가장 필요하다고 생각되는 지원 자료는 무엇인가요? (복수 선택 가능)","options":["프리미어 vs 리졸브 핵심 기능 비교표","단축키 시트","실습용 예제 프로젝트 파일","비기너용 커리큘럼 가이드 문서"]},{"id":8,"section":"세미나 경로","type":"multi","fieldName":"인지경로","text":"본 행사를 어떤 경로로 알게 되셨나요? (복수 선택 가능)","options":["인스타그램","네이버카페","페이스북","카카오 플친","메일","기타"]}]} -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#0a0f1e;--surface:#141416;--surface2:#1c1c1f;--border:rgba(255,255,255,0.1);--text:#f5f4f2;--text2:#d8d7d5;--text3:#999897;--accent:#3b82f6;--accent-dim:#3b82f61a;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:60px 24px;display:flex;justify-content:center;}
+.wrap{width:100%;max-width:680px;}
+.form-header{margin-bottom:32px;}
+.badge{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600;padding:5px 10px;border:1px solid rgba(243,146,0,0.3);border-radius:2px;background:var(--accent-dim);margin-bottom:16px;}
+.form-header h1{font-size:26px;font-weight:700;margin-bottom:8px;}
+.form-header p{font-size:15px;color:var(--text2);line-height:1.6;}
+.notice{padding:14px 18px;background:var(--accent-dim);border:1px solid rgba(243,146,0,0.15);border-radius:3px;font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:28px;}
+.progress-wrap{margin-bottom:28px;}
+.progress-label{font-size:13px;color:var(--text2);display:flex;justify-content:space-between;margin-bottom:8px;}
+.progress-bar{height:3px;background:var(--surface2);border-radius:2px;}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;width:0%;transition:width .3s;}
+.q-card{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:22px 24px;margin-bottom:12px;}
+.q-num{font-size:11px;letter-spacing:2px;color:var(--accent);font-weight:600;margin-bottom:8px;}
+.q-text{font-size:15px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:16px;}
+.options{display:flex;flex-direction:column;gap:8px;}
+.opt{padding:13px 16px;border-radius:3px;border:1.5px solid var(--border);background:var(--surface);font-size:15px;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:12px;transition:border-color .15s,background .15s,color .15s;user-select:none;}
+.opt .dot{width:18px;height:18px;border-radius:50%;flex-shrink:0;border:1.5px solid rgba(255,255,255,0.2);transition:border-color .15s,background .15s;}
+.opt:hover{border-color:rgba(243,146,0,0.5);color:var(--text);}
+.opt.on{border-color:var(--accent);background:var(--accent-dim);color:var(--text);}
+.opt.on .dot{border-color:var(--accent);background:var(--accent);}
+.opts-row{display:flex;flex-wrap:wrap;gap:8px;}
+.opt-chip{padding:10px 16px;border-radius:3px;border:1.5px solid var(--border);background:var(--surface);font-size:14px;color:var(--text2);cursor:pointer;transition:border-color .15s,background .15s,color .15s;user-select:none;}
+.opt-chip:hover{border-color:rgba(243,146,0,0.5);color:var(--text);}
+.opt-chip.on{border-color:var(--accent);background:var(--accent-dim);color:var(--accent);}
+.yn-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.opt-yn{padding:13px 16px;border-radius:3px;text-align:center;border:1.5px solid var(--border);background:var(--surface);font-size:14px;color:var(--text2);cursor:pointer;transition:border-color .15s,background .15s,color .15s;user-select:none;}
+.opt-yn:hover{border-color:rgba(243,146,0,0.5);color:var(--text);}
+.opt-yn.on{border-color:var(--accent);background:var(--accent-dim);color:var(--accent);}
+.q-textarea{width:100%;min-height:100px;background:var(--surface);border:1.5px solid var(--border);border-radius:3px;color:var(--text);font-family:'Noto Sans KR',sans-serif;font-size:15px;padding:14px 16px;resize:vertical;outline:none;transition:border-color .15s;line-height:1.6;}
+.q-textarea::placeholder{color:var(--text3);}
+.q-textarea:focus{border-color:rgba(243,146,0,0.5);}
+.submit-wrap{margin-top:28px;}
+.submit-btn{width:100%;padding:17px;background:var(--accent);color:#0c0c0d;border:none;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;border-radius:3px;letter-spacing:.5px;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .2s;}
+.submit-btn:hover{opacity:.88;}
+.submit-btn.off{opacity:.3;cursor:not-allowed;pointer-events:none;}
+.submit-note{font-size:13px;color:var(--text3);text-align:center;margin-top:10px;}
+.success{display:none;text-align:center;padding:80px 24px;}
+.success.show{display:block;}
+.success-icon{width:60px;height:60px;background:var(--accent-dim);border:1px solid rgba(243,146,0,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:24px;}
+.success h2{font-size:22px;font-weight:700;margin-bottom:10px;}
+.success p{font-size:15px;color:var(--text2);line-height:1.8;}
+@media(max-width:480px){body{padding:32px 16px;}.yn-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div id="survey">
+  <div class="form-header">
+    <div class="badge">다빈치리졸브 교육 세미나</div>
+    <h1>만족도 설문</h1>
+    <p>모든 문항은 선택형입니다. 솔직한 답변이 큰 도움이 됩니다.</p>
+  </div>
+  <div class="notice">설문 결과는 익명으로 처리되며, 세미나 운영 개선에만 활용됩니다.</div>
+  <div class="progress-wrap">
+    <div class="progress-label"><span>응답 진행도</span><span id="prog-text">0 / 6 완료</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+  </div>
+  <div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#f39200;font-weight:600;margin:28px 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(243,146,0,0.15)">강의 내용</div><div class="q-card"><div class="q-num">Q 01</div><div class="q-text">오늘 강의의 진행 속도와 실습 시간 배분은 적절했나요?</div><div class="options" id="q4"><div class="opt" data-v="너무 빠르고 실습 시간이 부족했다"><span class="dot"></span>너무 빠르고 실습 시간이 부족했다</div><div class="opt" data-v="대체로 적절했다"><span class="dot"></span>대체로 적절했다</div><div class="opt" data-v="약간 느리거나 실습 시간이 여유로웠다"><span class="dot"></span>약간 느리거나 실습 시간이 여유로웠다</div></div></div>
+<div class="q-card"><div class="q-num">Q 02</div><div class="q-text">강의 난이도는 적절했나요?</div><div class="options" id="q5"><div class="opt" data-v="너무 어려웠다"><span class="dot"></span>너무 어려웠다</div><div class="opt" data-v="적절했다"><span class="dot"></span>적절했다</div><div class="opt" data-v="너무 쉬웠다"><span class="dot"></span>너무 쉬웠다</div></div></div>
+<div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#f39200;font-weight:600;margin:28px 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(243,146,0,0.15)">전환요소</div><div class="q-card"><div class="q-num">Q 03</div><div class="q-text">오늘 교육 후, 실무 영상 작업이나 교육 현장에 DaVinci Resolve를 도입할 의향이 생기셨나요?</div><div class="options" id="q6"><div class="opt" data-v="네, 적극적으로 도입할 생각입니다"><span class="dot"></span>네, 적극적으로 도입할 생각입니다</div><div class="opt" data-v="긍정적이지만 좀 더 학습이 필요합니다"><span class="dot"></span>긍정적이지만 좀 더 학습이 필요합니다</div><div class="opt" data-v="당장은 어렵고 병행 정도만 고려 중입니다"><span class="dot"></span>당장은 어렵고 병행 정도만 고려 중입니다</div><div class="opt" data-v="현재로선 도입 계획이 없습니다"><span class="dot"></span>현재로선 도입 계획이 없습니다</div></div></div>
+<div class="q-card"><div class="q-num">Q 04</div><div class="q-text">DaVinci Resolve로의 완전한 전환을 망설이게 하는 요인이 있다면 무엇인가요? (복수 선택 가능)</div><div class="options" id="q7"><div class="opt" data-v="기존 Premiere Pro UI/UX에 익숙해진 작업 환경"><span class="dot"></span>기존 Premiere Pro UI/UX에 익숙해진 작업 환경</div><div class="opt" data-v="Fairlight, Fusion 등 낯선 페이지에 대한 진입 장벽"><span class="dot"></span>Fairlight, Fusion 등 낯선 페이지에 대한 진입 장벽</div><div class="opt" data-v="기존 프리미어 프로젝트 파일 및 플러그인 호환성 문제"><span class="dot"></span>기존 프리미어 프로젝트 파일 및 플러그인 호환성 문제</div><div class="opt" data-v="팀원이나 협업자가 Premiere Pro를 사용 중"><span class="dot"></span>팀원이나 협업자가 Premiere Pro를 사용 중</div></div></div>
+<div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#f39200;font-weight:600;margin:28px 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(243,146,0,0.15)">교육자료</div><div class="q-card"><div class="q-num">Q 05</div><div class="q-text">DaVinci Resolve를 팀 내 도입하거나 타인에게 교육할 때, 가장 필요하다고 생각되는 지원 자료는 무엇인가요? (복수 선택 가능)</div><div class="opts-row" id="q10"><div class="opt-chip" data-v="프리미어 vs 리졸브 핵심 기능 비교표">프리미어 vs 리졸브 핵심 기능 비교표</div><div class="opt-chip" data-v="단축키 시트">단축키 시트</div><div class="opt-chip" data-v="실습용 예제 프로젝트 파일">실습용 예제 프로젝트 파일</div><div class="opt-chip" data-v="비기너용 커리큘럼 가이드 문서">비기너용 커리큘럼 가이드 문서</div></div></div>
+<div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#f39200;font-weight:600;margin:28px 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(243,146,0,0.15)">세미나 경로</div><div class="q-card"><div class="q-num">Q 06</div><div class="q-text">본 행사를 어떤 경로로 알게 되셨나요? (복수 선택 가능)</div><div class="opts-row" id="q8"><div class="opt-chip" data-v="인스타그램">인스타그램</div><div class="opt-chip" data-v="네이버카페">네이버카페</div><div class="opt-chip" data-v="페이스북">페이스북</div><div class="opt-chip" data-v="카카오 플친">카카오 플친</div><div class="opt-chip" data-v="메일">메일</div><div class="opt-chip" data-v="기타">기타</div></div></div>
+  <div class="submit-wrap">
+    <button class="submit-btn off" id="submit-btn"><span>설문 제출하기</span><span>→</span></button>
+    <p class="submit-note" id="submit-note">필수 문항(Q1 기준 선택형 6개)을 완료하시면 제출 버튼이 활성화됩니다.</p>
+  </div>
+</div>
+<div class="success" id="success">
+  <div class="success-icon">✓</div>
+  <h2>설문이 제출되었습니다</h2>
+  <p>소중한 의견 감사합니다.<br>더 좋은 세미나로 찾아뵙겠습니다.<br><br><span style="color:var(--accent);font-weight:600;">하이픽셀플러스</span> 드림</p>
+</div>
+</div>
+<script>
+var ans = { "q4":null,"q5":null,"q6":null,"q7":null,"q10":[],"q8":[] };
+
+  document.getElementById('q4') && document.getElementById('q4').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q4').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q4"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q5') && document.getElementById('q5').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q5').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q5"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q6') && document.getElementById('q6').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q6').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q6"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q7') && document.getElementById('q7').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q7').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q7"]=el.getAttribute('data-v'); update();
+    };
+  });
+
+  document.getElementById('q10') && document.getElementById('q10').querySelectorAll('.opt-chip').forEach(function(el){
+    el.onclick=function(){
+      el.classList.toggle('on');
+      var v=el.getAttribute('data-v');
+      if(el.classList.contains('on')){ ans["q10"].push(v); }
+      else { ans["q10"]=ans["q10"].filter(function(x){return x!==v;}); }
+      update();
+    };
+  });
+  document.getElementById('q8') && document.getElementById('q8').querySelectorAll('.opt-chip').forEach(function(el){
+    el.onclick=function(){
+      el.classList.toggle('on');
+      var v=el.getAttribute('data-v');
+      if(el.classList.contains('on')){ ans["q8"].push(v); }
+      else { ans["q8"]=ans["q8"].filter(function(x){return x!==v;}); }
+      update();
+    };
+  });
+document.getElementById('submit-btn').onclick = function() {
+  if (this.classList.contains('off')) return;
+  var payload = {
+    "강의시간": ans["q4"],
+    "강의난이도": ans["q5"],
+    "다빈치 전환의향": ans["q6"],
+    "다빈치 전환의향 불가능 이유": ans["q7"],
+    "교육자료": ans["q10"].join(', '),
+    "인지경로": ans["q8"].join(', ')
+  };
+  console.log('제출:', payload);
+  fetch("https://script.google.com/macros/s/AKfycbyRnVNQUZAcRk2fUx7dGcxv8ixvztwkYsxqqKoyz2BypupTZYBdh3WtraKk4vJZij6f/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(payload)});
+  document.getElementById('survey').style.display = 'none';
+  document.getElementById('success').classList.add('show');
+};
+function update() {
+  var done = 0;
+  if(ans["q4"]) done++;
+  if(ans["q5"]) done++;
+  if(ans["q6"]) done++;
+  if(ans["q7"]) done++;
+  if(ans["q10"].length>0) done++;
+  if(ans["q8"].length>0) done++;
+  document.getElementById('prog-fill').style.width = (done / 6 * 100) + '%';
+  document.getElementById('prog-text').textContent = done + ' / 6 완료';
+  var btn = document.getElementById('submit-btn');
+  if (done >= 6) {
+    btn.classList.remove('off');
+    document.getElementById('submit-note').textContent = '모든 문항 완료! 제출해 주세요.';
+  } else {
+    btn.classList.add('off');
+  }
+}
+
+</script>
+</body>
+</html>
